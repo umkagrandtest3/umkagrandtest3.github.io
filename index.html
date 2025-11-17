@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+<meta charset="UTF-8">
+<title>Hippie Shop</title>
+<style>
+    body {
+        font-family: "Comic Sans MS", cursive;
+        background: linear-gradient(135deg, #ffcf48, #ff8a65, #ffd54f);
+        margin: 0;
+        padding: 0;
+        color: #4e342e;
+    }
+
+    header {
+        text-align: center;
+        padding: 30px;
+        background: rgba(255, 255, 255, 0.6);
+        border-bottom: 4px dashed #6a1b9a;
+    }
+
+    h1 {
+        font-size: 48px;
+        color: #6a1b9a;
+        text-shadow: 2px 2px #ffeb3b;
+    }
+
+    .container {
+        width: 90%;
+        margin: auto;
+        display: flex;
+        justify-content: space-around;
+        flex-wrap: wrap;
+        margin-top: 30px;
+    }
+
+    .product {
+        background: #fffde7;
+        width: 250px;
+        padding: 20px;
+        margin: 15px;
+        border-radius: 20px;
+        text-align: center;
+        border: 3px solid #ff8f00;
+        box-shadow: 0 0 10px #ffcc80;
+    }
+
+    .product img {
+        width: 180px;
+        border-radius: 12px;
+    }
+
+    button {
+        background: #8e24aa;
+        color: white;
+        border: none;
+        padding: 10px 15px;
+        border-radius: 12px;
+        font-size: 16px;
+        cursor: pointer;
+        margin-top: 10px;
+        transition: 0.2s;
+    }
+
+    button:hover {
+        background: #6a1b9a;
+    }
+
+    #cart {
+        background: rgba(255, 255, 255, 0.85);
+        margin: 30px auto;
+        padding: 20px;
+        width: 60%;
+        border-radius: 20px;
+        border: 4px dotted #8e24aa;
+    }
+
+    #cart h2 {
+        text-align: center;
+        font-size: 32px;
+        color: #8e24aa;
+    }
+
+    .cart-item {
+        display: flex;
+        justify-content: space-between;
+        padding: 10px 0;
+        border-bottom: 2px dashed #ce93d8;
+        font-size: 20px;
+    }
+
+    .remove-btn {
+        background: #ff7043;
+        padding: 5px 10px;
+        border-radius: 8px;
+        font-size: 14px;
+    }
+</style>
+</head>
+<body>
+
+<header>
+    <h1>🌼 Hippie Shop 🌈</h1>
+    <p>Відчуй свободу. Обирай любов. Купуй хіппі-вироби ✌️</p>
+</header>
+
+<div class="container">
+    <div class="product">
+        <img src="https://st.violity.com/auction/big/auctions/17/54/77/7/175477785.jpg" alt="Гітара">
+        <h3>Акустична гітара</h3>
+        <p>1200 грн</p>
+        <button onclick="addToCart('Акустична гітара', 1200)">Додати в корзину</button>
+    </div>
+
+    <div class="product">
+        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTt6aj1-q4tUk7vTTZiVL-yuo8p6Fsc9RRBmA&s" alt="Ретро-окуляри">
+        <h3>Ретро окуляри</h3>
+        <p>350 грн</p>
+        <button onclick="addToCart('Ретро окуляри', 350)">Додати в корзину</button>
+    </div>
+
+    <div class="product">
+        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRSydeJCPX7SlOngGwd7nesWYmhq11zctj0aw&s" alt="Хіппі футболка">
+        <h3>Хіппі футболка</h3>
+        <p>450 грн</p>
+        <button onclick="addToCart('Хіппі футболка', 450)">Додати в корзину</button>
+    </div>
+</div>
+
+<div id="cart">
+    <h2>🛒 Корзина</h2>
+    <div id="cart-items"></div>
+</div>
+
+<script>
+    const cartItems = [];
+
+    function addToCart(name, price) {
+        cartItems.push({ name, price });
+        renderCart();
